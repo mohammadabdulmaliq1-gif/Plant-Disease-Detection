@@ -1,0 +1,372 @@
+{
+  "model": {
+    "name": "Plant Disease Detection Model V2",
+    "version": "2.0.0",
+    "description": "EfficientNetV2B0-based plant disease detection trained on PlantVillage dataset",
+    "framework": "tensorflow",
+    "input_shape": [224, 224, 3],
+    "supported_formats": ["jpeg", "jpg", "png", "bmp", "webp"]
+  },
+  "classes": [
+    {
+      "id": "Pepper__bell___Bacterial_spot",
+      "name": "Bell Pepper - Bacterial Spot",
+      "plant": "Bell Pepper",
+      "disease": "Bacterial Spot",
+      "severity": "moderate",
+      "symptoms": [
+        "Small, water-soaked spots on leaves and fruit",
+        "Spots turn brown with yellow halos",
+        "Lesions may coalesce causing blighted areas",
+        "Premature fruit drop in severe cases"
+      ],
+      "causes": "Caused by Xanthomonas campestris pv. vesicatoria, spread by rain splash, wind, and infected seeds",
+      "treatment": {
+        "chemical": "Apply copper-based bactericides (copper hydroxide or copper sulfate) at 7-10 day intervals",
+        "cultural": "Remove and destroy infected plant material, avoid overhead irrigation, improve air circulation",
+        "preventive": "Use certified disease-free seeds, practice 2-3 year crop rotation, avoid working in wet fields"
+      },
+      "urgency": "Medium - treat within 1 week to prevent spread",
+      "economic_impact": "Can reduce yield by 20-50% under severe epidemic conditions"
+    },
+    {
+      "id": "Pepper__bell___healthy",
+      "name": "Bell Pepper - Healthy",
+      "plant": "Bell Pepper",
+      "disease": "Healthy",
+      "severity": "none",
+      "symptoms": [
+        "Bright green, firm leaves with no discoloration",
+        "Normal leaf shape and texture",
+        "Vigorous plant growth with no lesions"
+      ],
+      "causes": "No disease present - plant is in good health",
+      "treatment": {
+        "chemical": "No chemical treatment needed",
+        "cultural": "Continue regular watering, fertilization, and monitoring",
+        "preventive": "Maintain proper spacing, avoid overwatering, scout regularly for early disease detection"
+      },
+      "urgency": "None - plant is healthy, continue routine care",
+      "economic_impact": "No negative impact - healthy plants produce optimal yield"
+    },
+    {
+      "id": "Potato___Early_blight",
+      "name": "Potato - Early Blight",
+      "plant": "Potato",
+      "disease": "Early Blight",
+      "severity": "moderate",
+      "symptoms": [
+        "Dark brown to black lesions with concentric rings (target-board pattern)",
+        "Lesions surrounded by yellow chlorotic tissue",
+        "Lower leaves affected first, progressing upward",
+        "Premature defoliation in severe cases"
+      ],
+      "causes": "Caused by Alternaria solani fungus; favored by warm temperatures (24-29°C) and high humidity",
+      "treatment": {
+        "chemical": "Apply chlorothalonil, mancozeb, or copper-based fungicides every 7-10 days",
+        "cultural": "Remove infected lower leaves, avoid overhead watering, improve plant spacing for airflow",
+        "preventive": "Plant certified disease-free tubers, practice 3-4 year crop rotation, maintain adequate soil fertility"
+      },
+      "urgency": "Medium - treat within 1-2 weeks before significant defoliation occurs",
+      "economic_impact": "Can reduce tuber yield by 20-30% and reduce tuber quality if severe"
+    },
+    {
+      "id": "Potato___Late_blight",
+      "name": "Potato - Late Blight",
+      "plant": "Potato",
+      "disease": "Late Blight",
+      "severity": "high",
+      "symptoms": [
+        "Water-soaked, pale green lesions on leaves that rapidly turn brown-black",
+        "White fluffy sporulation visible on underside of leaves in humid conditions",
+        "Brown lesions on stems, often causing collapse",
+        "Infected tubers show reddish-brown dry rot internally"
+      ],
+      "causes": "Caused by Phytophthora infestans oomycete; spreads rapidly in cool, moist weather (10-20°C)",
+      "treatment": {
+        "chemical": "Apply systemic fungicides (metalaxyl, cymoxanil) or protectants (chlorothalonil, mancozeb) preventively every 5-7 days",
+        "cultural": "Remove and destroy all infected plant material immediately, avoid overhead irrigation, hill soil to protect tubers",
+        "preventive": "Plant resistant varieties, use certified seed potatoes, apply preventive fungicides during cool/wet periods"
+      },
+      "urgency": "High - immediate action required, disease can destroy entire crop within days",
+      "economic_impact": "Historically devastating - can cause 100% crop loss under epidemic conditions; caused the Irish Famine"
+    },
+    {
+      "id": "Potato___healthy",
+      "name": "Potato - Healthy",
+      "plant": "Potato",
+      "disease": "Healthy",
+      "severity": "none",
+      "symptoms": [
+        "Dark green, robust foliage with no lesions",
+        "Normal leaf texture and color",
+        "Vigorous stem growth with no signs of infection"
+      ],
+      "causes": "No disease present - plant is in good health",
+      "treatment": {
+        "chemical": "No chemical treatment needed",
+        "cultural": "Continue regular hilling, watering, and monitoring",
+        "preventive": "Scout regularly, maintain proper irrigation, consider preventive fungicide program during rainy periods"
+      },
+      "urgency": "None - plant is healthy, continue routine care",
+      "economic_impact": "No negative impact - healthy plants produce optimal tuber yield"
+    },
+    {
+      "id": "Tomato_Bacterial_spot",
+      "name": "Tomato - Bacterial Spot",
+      "plant": "Tomato",
+      "disease": "Bacterial Spot",
+      "severity": "moderate",
+      "symptoms": [
+        "Small, water-soaked spots on leaves, stems, and fruit",
+        "Spots turn brown-black with yellow halos on leaves",
+        "Scabby, raised lesions on fruit surface",
+        "Defoliation in severe infections"
+      ],
+      "causes": "Caused by Xanthomonas vesicatoria; spreads via rain splash, wind, and contaminated tools",
+      "treatment": {
+        "chemical": "Apply copper-based bactericides with mancozeb every 5-7 days during wet weather",
+        "cultural": "Stake plants for better air circulation, remove infected leaves, avoid working when plants are wet",
+        "preventive": "Use disease-free transplants and seeds, practice crop rotation, avoid overhead irrigation"
+      },
+      "urgency": "Medium - treat within 1 week, especially before rainy periods",
+      "economic_impact": "Can reduce marketable fruit yield by 10-40%; fruit blemishes reduce market value significantly"
+    },
+    {
+      "id": "Tomato_Early_blight",
+      "name": "Tomato - Early Blight",
+      "plant": "Tomato",
+      "disease": "Early Blight",
+      "severity": "moderate",
+      "symptoms": [
+        "Dark brown lesions with concentric rings on lower leaves",
+        "Yellow chlorosis surrounding lesions",
+        "Lesions may coalesce, causing large necrotic areas",
+        "Stem lesions (collar rot) can cause plant death in young transplants"
+      ],
+      "causes": "Caused by Alternaria solani fungus; favored by alternating wet and dry conditions with warm temperatures",
+      "treatment": {
+        "chemical": "Apply chlorothalonil, azoxystrobin, or copper fungicides at first sign of disease, repeat every 7-10 days",
+        "cultural": "Remove and compost infected lower leaves, mulch to prevent soil splash, stake plants",
+        "preventive": "Plant resistant varieties, avoid excessive nitrogen fertilization, maintain proper plant spacing"
+      },
+      "urgency": "Medium - treat within 1-2 weeks to prevent defoliation",
+      "economic_impact": "Causes 20-40% yield reduction; defoliation reduces fruit quality and sun-scalds fruit"
+    },
+    {
+      "id": "Tomato_Late_blight",
+      "name": "Tomato - Late Blight",
+      "plant": "Tomato",
+      "disease": "Late Blight",
+      "severity": "high",
+      "symptoms": [
+        "Pale green to brown water-soaked patches on leaves",
+        "White mold growth on underside of affected leaves",
+        "Brown, greasy-looking lesions on stems",
+        "Brown to dark brown firm rot on fruit"
+      ],
+      "causes": "Caused by Phytophthora infestans; thrives in cool (10-20°C), wet conditions with high humidity",
+      "treatment": {
+        "chemical": "Apply systemic fungicides (cymoxanil, famoxadone) immediately; preventive copper sprays during cool/wet weather",
+        "cultural": "Remove and bag all infected material, never compost infected plants, improve field drainage",
+        "preventive": "Plant resistant varieties, apply preventive fungicides during cool/wet forecasts, avoid dense planting"
+      },
+      "urgency": "High - immediate treatment required; can destroy entire crop within 7-10 days",
+      "economic_impact": "Can cause 70-100% crop loss in epidemic years; one of the most destructive tomato diseases"
+    },
+    {
+      "id": "Tomato_Leaf_Mold",
+      "name": "Tomato - Leaf Mold",
+      "plant": "Tomato",
+      "disease": "Leaf Mold",
+      "severity": "moderate",
+      "symptoms": [
+        "Pale green to yellow spots on upper leaf surface",
+        "Olive-green to grayish-brown velvety mold on underside of leaves",
+        "Leaves eventually turn yellow and drop",
+        "Primarily affects lower canopy leaves first"
+      ],
+      "causes": "Caused by Fulvia fulva (Passalora fulva) fungus; favored by high humidity (>85%) and poor air circulation",
+      "treatment": {
+        "chemical": "Apply chlorothalonil, mancozeb, or copper fungicides; copper-based fungicides work well",
+        "cultural": "Increase ventilation in greenhouses, reduce humidity by improving spacing and pruning",
+        "preventive": "Use resistant varieties, prune suckers for better air circulation, avoid overhead irrigation"
+      },
+      "urgency": "Medium - treat within 1-2 weeks, particularly important in greenhouse settings",
+      "economic_impact": "Can reduce yield by 20-30%; primarily a problem in greenhouse production"
+    },
+    {
+      "id": "Tomato_Septoria_leaf_spot",
+      "name": "Tomato - Septoria Leaf Spot",
+      "plant": "Tomato",
+      "disease": "Septoria Leaf Spot",
+      "severity": "moderate",
+      "symptoms": [
+        "Numerous small, circular spots with dark brown borders and lighter gray centers",
+        "Tiny black fruiting bodies (pycnidia) visible in spot centers",
+        "Lower leaves affected first, progressing upward",
+        "Severe defoliation leaving fruit exposed to sunscald"
+      ],
+      "causes": "Caused by Septoria lycopersici fungus; spreads via water splash, favored by warm (20-25°C) wet conditions",
+      "treatment": {
+        "chemical": "Apply chlorothalonil, mancozeb, or copper-based fungicides every 7-10 days",
+        "cultural": "Remove and destroy infected leaves, mulch soil to prevent splash dispersal, stake plants",
+        "preventive": "Rotate crops for 3+ years, use disease-free transplants, avoid overhead irrigation"
+      },
+      "urgency": "Medium - treat promptly to prevent extensive defoliation and fruit quality loss",
+      "economic_impact": "Causes 20-50% yield loss through defoliation; defoliated fruit suffers sunscald damage"
+    },
+    {
+      "id": "Tomato_Spider_mites_Two_spotted_spider_mite",
+      "name": "Tomato - Two-Spotted Spider Mite",
+      "plant": "Tomato",
+      "disease": "Two-Spotted Spider Mite Infestation",
+      "severity": "moderate",
+      "symptoms": [
+        "Tiny yellow or white stippling dots on upper leaf surface",
+        "Fine webbing on undersides of leaves and between leaves",
+        "Leaves turn bronze, yellow, or dry up and drop",
+        "Severe infestations cause complete defoliation"
+      ],
+      "causes": "Caused by Tetranychus urticae mites; populations explode in hot, dry conditions; spreads by wind and human movement",
+      "treatment": {
+        "chemical": "Apply miticides (abamectin, bifenazate, spiromesifen); rotate chemical classes to prevent resistance",
+        "cultural": "Spray plants with strong jets of water to dislodge mites, remove heavily infested leaves",
+        "preventive": "Introduce predatory mites (Phytoseiidae), maintain adequate irrigation to reduce drought stress"
+      },
+      "urgency": "Medium-High - treat within 1 week; populations can double every 3-5 days in hot weather",
+      "economic_impact": "Can cause 30-50% yield reduction; market value drops significantly from damaged fruit"
+    },
+    {
+      "id": "Tomato__Target_Spot",
+      "name": "Tomato - Target Spot",
+      "plant": "Tomato",
+      "disease": "Target Spot",
+      "severity": "moderate",
+      "symptoms": [
+        "Brown circular lesions with concentric ring pattern (target-like appearance)",
+        "Yellow halo surrounding lesions",
+        "Lesions appear on leaves, stems, and fruit",
+        "Fruit lesions are sunken and dark-centered"
+      ],
+      "causes": "Caused by Corynespora cassiicola fungus; favored by warm temperatures and prolonged leaf wetness",
+      "treatment": {
+        "chemical": "Apply azoxystrobin, chlorothalonil, or copper-based fungicides at 7-14 day intervals",
+        "cultural": "Improve air circulation by pruning and staking, avoid overhead irrigation, remove infected debris",
+        "preventive": "Use resistant varieties, practice crop rotation, maintain good field sanitation"
+      },
+      "urgency": "Medium - treat within 1-2 weeks to prevent significant yield loss",
+      "economic_impact": "Can cause 20-30% yield loss; common in greenhouse and tropical production systems"
+    },
+    {
+      "id": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+      "name": "Tomato - Yellow Leaf Curl Virus",
+      "plant": "Tomato",
+      "disease": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+      "severity": "high",
+      "symptoms": [
+        "Upward curling and cupping of young leaves",
+        "Yellowing (chlorosis) of leaf margins and veins",
+        "Severely stunted plant growth",
+        "Flower drop and near-complete fruit abortion in severe cases"
+      ],
+      "causes": "Caused by Tomato yellow leaf curl virus (TYLCV); transmitted exclusively by silverleaf whitefly (Bemisia tabaci)",
+      "treatment": {
+        "chemical": "No cure for infected plants; control whitefly vectors with imidacloprid, acetamiprid, or insecticidal soaps",
+        "cultural": "Remove and destroy infected plants immediately, use yellow sticky traps for whitefly monitoring",
+        "preventive": "Plant resistant varieties (key strategy), use reflective mulches to repel whiteflies, use insect-proof netting in greenhouses"
+      },
+      "urgency": "High - no cure available; infected plants must be removed to protect remaining crop",
+      "economic_impact": "Can cause 70-100% yield loss if infection occurs early; major constraint to tomato production in tropical regions"
+    },
+    {
+      "id": "Tomato__Tomato_mosaic_virus",
+      "name": "Tomato - Mosaic Virus",
+      "plant": "Tomato",
+      "disease": "Tomato Mosaic Virus (ToMV)",
+      "severity": "moderate",
+      "symptoms": [
+        "Light and dark green mosaic mottling on leaves",
+        "Leaf malformation and curling",
+        "Stunted plant growth",
+        "Fruit may show yellow mottling or internal browning"
+      ],
+      "causes": "Caused by Tomato mosaic virus (ToMV); transmitted mechanically through infected tools, hands, and plant contact",
+      "treatment": {
+        "chemical": "No chemical treatment available; focus on sanitation and vector control",
+        "cultural": "Remove and destroy infected plants, disinfect tools with 10% bleach or 70% alcohol between plants, wash hands frequently",
+        "preventive": "Plant virus-resistant varieties, use certified virus-free seeds, do not smoke near tomato plants (tobacco mosaic virus can infect tomatoes)"
+      },
+      "urgency": "Medium-High - no cure; remove infected plants to prevent spread via mechanical transmission",
+      "economic_impact": "Can cause 10-25% yield loss depending on infection timing; early infections cause more severe losses"
+    },
+    {
+      "id": "Tomato_healthy",
+      "name": "Tomato - Healthy",
+      "plant": "Tomato",
+      "disease": "Healthy",
+      "severity": "none",
+      "symptoms": [
+        "Deep green, firm leaves with no lesions or discoloration",
+        "Normal leaf shape with no curling or mottling",
+        "Vigorous stem growth with no lesions",
+        "Normal fruit set and development"
+      ],
+      "causes": "No disease present - plant is in excellent health",
+      "treatment": {
+        "chemical": "No chemical treatment needed",
+        "cultural": "Continue regular pruning, staking, and monitoring",
+        "preventive": "Maintain proper irrigation, scout weekly for early pest/disease detection, avoid excessive nitrogen"
+      },
+      "urgency": "None - plant is healthy, continue routine care",
+      "economic_impact": "No negative impact - healthy plants produce maximum yield and fruit quality"
+    }
+  ],
+  "severity_levels": {
+    "none": {
+      "level": 0,
+      "color": "#10B981",
+      "description": "No disease detected - plant appears healthy"
+    },
+    "low": {
+      "level": 1,
+      "color": "#F59E0B",
+      "description": "Minor infection - monitor closely and consider preventive treatment"
+    },
+    "moderate": {
+      "level": 2,
+      "color": "#F97316",
+      "description": "Moderate infection - treatment recommended within 1-2 weeks"
+    },
+    "high": {
+      "level": 3,
+      "color": "#DC2626",
+      "description": "Severe infection - immediate treatment required to save crop"
+    },
+    "very_high": {
+      "level": 4,
+      "color": "#7C2D12",
+      "description": "Critical infection - aggressive treatment needed, consider plant removal"
+    }
+  },
+  "treatment_types": {
+    "chemical": {
+      "name": "Chemical Treatment",
+      "description": "Fungicides, bactericides, miticides, and other chemical interventions"
+    },
+    "cultural": {
+      "name": "Cultural Practices",
+      "description": "Management practices, physical interventions, and crop sanitation"
+    },
+    "preventive": {
+      "name": "Preventive Measures",
+      "description": "Prevention strategies, resistant varieties, and long-term management"
+    }
+  },
+  "confidence_thresholds": {
+    "high_confidence": 0.7,
+    "medium_confidence": 0.35,
+    "low_confidence": 0.15,
+    "uncertain": 0.05
+  }
+}
